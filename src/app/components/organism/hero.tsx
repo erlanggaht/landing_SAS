@@ -7,7 +7,7 @@ export default function Hero() {
     return (
         <section className='hero bg-gradient-to-r from-yellowBase to-otherColor py-20 px-16 sm:p-20 relative '>
 
-            <figure  className='absolute drop-shadow right-0 sm:right-12 -bottom-16 scale-75 sm:scale-100 opacity-90 grayscale  '>
+            <figure  className='absolute drop-shadow right-0 sm:right-12 -bottom-12 scale-90 sm:scale-100 opacity-90  '>
                 <Image src={gadget} width={520} height={520} alt='gadgetImage'/>
             </figure>
 
@@ -17,8 +17,8 @@ export default function Hero() {
             </div>
 
             <div className='mt-9 sm:mt-20 flex relative'>
-            <Button props={{text:"We Asked",style:"bg-base  font-normal px-6 sm:px-10 py-3  text-dark  shadow drop-shadow"}}/>
-            <Button props={{text:"Explore More",style:"bg-base  font-normal px-6 sm:px-10 py-3  text-dark  shadow drop-shadow ml-2"}}/>
+            <Button props={{text:"We Asked",style:"bg-base  font-normal px-6 sm:px-10 py-3  text-dark  shadow-xl drop-shadow rounded hover:opacity-80"}}/>
+            <Button props={{text:"Explore More",style:"bg-base  font-normal px-6 sm:px-10 py-3  text-dark  shadow-xl drop-shadow ml-2 rounded hover:opacity-80"}}/>
             </div>
         </section>
     )

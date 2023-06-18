@@ -12,22 +12,22 @@ export const CardStyle = {
 
 export default function CardGrid() {
     return (
-        <section className='headerMainGrid '>
+        <section className='headerMainGrid  '>
             {/* 1 */}
             <Card_Grid props={{
                 text: "Android & Iphone", icon: <MobileIcon props={{
                     w: 42,
                     h: 42,
-                    fill: '#068DA9'
+                    fill: '#888'
                 }} />, style: CardStyle.style
             }} />
 
             {/* 2 */}
             <Card_Grid props={{
-                text: "Laptop & Computer", icon: <LaptopComputerIcon props={{
+                text: "Laptop & Printer", icon: <LaptopComputerIcon props={{
                     w: 42,
                     h: 42,
-                    fill: '#068DA9'
+                    fill: '#888'
                 }} />, style: CardStyle.style
             }} />
 
@@ -36,16 +36,16 @@ export default function CardGrid() {
                 text: "Audio Accessories", icon: <AudioIcon props={{
                     w: 42,
                     h: 42,
-                    fill: '#068DA9'
+                    fill: '#888'
                 }} />, style: CardStyle.style
             }} />
 
             {/* 4 */}
             <Card_Grid props={{
-                text: "Smart Tv & Monitor", icon: <SmartTvIcon props={{
+                text: "Computer & SmartTV", icon: <SmartTvIcon props={{
                     w: 42,
                     h: 42,
-                    fill: '#068DA9'
+                    fill: '#888'
                 }} />, style: CardStyle.style
             }} />
 
@@ -54,7 +54,7 @@ export default function CardGrid() {
                 text: "Ext-Int Storage", icon: <StorageIcon props={{
                     w: 42,
                     h: 42,
-                    fill: '#068DA9'
+                    fill: '#888'
                 }} />, style: CardStyle.style
             }} />
             
@@ -63,9 +63,10 @@ export default function CardGrid() {
                 text: "Game Devices", icon: <GameIcon props={{
                     w: 42,
                     h: 42,
-                    fill: '#068DA9'
+                    fill: '#888'
                 }} />, style: CardStyle.style
             }} />
+
         </section>
     )
 }

@@ -7,7 +7,7 @@ export default function Navigasi() {
 <div className="nav bg-dark sm:px-6">
   <input type="checkbox" id="nav-check" />
   <div className="nav-header">
-    <div className="nav-title p-2 py-5 text-4xl drop-shadow font-bold text-white">
+    <div className="nav-title p-4 py-5 text-4xl drop-shadow font-bold text-white">
       S<span className="text-yellowBase">A</span>S
     </div>
   </div>
@@ -23,8 +23,9 @@ export default function Navigasi() {
     <a href="//github.io/jo_geek" target="_blank">Products</a>
     <a href="http://stackoverflow.com/users/4084003/" target="_blank">Address</a>
     <a href="https://in.linkedin.com/in/jonesvinothjoseph" target="_blank">About Us</a>
-    <a href="https://codepen.io/jo_Geek/" target="_blank">Contact Us</a>
-    <Button props={{text:"Login",style:"bg-yellowBase sm:ml-2 rounded-sm px-5 py-3 hover:opacity-90 text-white  "}}></Button>
+    <div className="w-full text-right p-5 sm:inline">
+    <Button props={{text:"Hubungi Kami",style:"bg-yellowBase sm:ml-2 rounded-sm px-5 py-3 hover:opacity-90 text-white  "}}></Button>
+    </div>
   </div>
 </div>
 
