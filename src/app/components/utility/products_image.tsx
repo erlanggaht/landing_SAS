@@ -6,6 +6,7 @@ import smartv from '@/app/assets/products_img/smartMiTv.png'
 import printer_l220 from '@/app/assets/products_img/printer_l220.png'
 import storage from '@/app/assets/products_img/storage.png'
 import tg from '@/app/assets/products_img/tg.png'
+import erlangga from '@/app/assets/erlangga.jpg'
 
 
 export const prodcutImage = {
@@ -16,5 +17,12 @@ export const prodcutImage = {
     smartv : smartv,
     printer : printer_l220,
     storage : storage,
-    tempared_glass : tg
+    tempared_glass : tg,
+
+
+
+}
+
+export const consultantImage = {
+    erlangga : erlangga
 }

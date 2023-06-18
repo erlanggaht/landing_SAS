@@ -20,7 +20,7 @@ export default function ProductsGrid({props} : PropsProductImage ) {
       before:absolute before:content-['SmartWatch'] before:-left-5 before:scale-75 before:top-1 before:bg-dark before:text-white before:p-2 before:-rotate-[40deg] before:z-50 before:text-sm before:font-light before:opacity-90 before:shadow">
         <figure className='p-3 pt-7 flex justify-center items-center ' >
           <Tilt>
-            <Image alt={'productImage'} src={image} height={140} width={140}  className={`object-contain drop-shadow-xl w-auto h-[176px]`}/></Tilt>
+            <Image alt={'productImage'} src={image} height={140} width={140}  className={`ImageProduct object-contain drop-shadow-xl w-auto h-[176px]`}/></Tilt>
         </figure>
 
         <div className='areaDescript bg-white  mt-7'>

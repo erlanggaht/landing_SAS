@@ -8,7 +8,7 @@ export default function Hero() {
         <section className='hero bg-gradient-to-r from-yellowBase to-otherColor py-20 px-16 sm:p-20 relative '>
 
             <figure  className='absolute drop-shadow right-0 sm:right-12 -bottom-12 scale-90 sm:scale-100 opacity-90  '>
-                <Image src={gadget} width={520} height={520} alt='gadgetImage'/>
+                <Image src={gadget} width={520} height={520} alt='gadgetImage' className='ImageProductHero'/>
             </figure>
 
             <div>

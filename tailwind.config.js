@@ -13,6 +13,7 @@ module.exports = {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'card1': "url('./assets/newProd.jpg')",
         'card2': "url('./assets/servimg.webp')",
+        'erlangga' : "url('./assets/erlangga.jpg')"
 
       },
       colors : {

@@ -163,3 +163,25 @@
     grid-template-rows: repeat(2, 1fr);
     gap:1.5rem;
 }
+
+
+/* shadow drop */
+.ImageProduct {
+  filter: drop-shadow(2px 50px 15px rgba(0,0,0,0.2));
+}
+
+.swiper-scrollbar-drag {
+  background-color: #068DA9 !important;
+  position: absolute !important;
+  top:-4px !important;
+  height: 13px !important;
+  border-radius: 0px !important;
+
+
+}
+
+.swiper-scrollbar {
+  height: 6px !important;
+  position: relative !important;
+  border-radius: 0px !important;
+}
