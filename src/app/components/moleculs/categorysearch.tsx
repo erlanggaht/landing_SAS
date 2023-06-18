@@ -5,9 +5,9 @@ import Input_Subcribe from './input_subcribe'
 export default function CategorySearch() {
     return (
         <>
-            <section className='flex items-center sm:justify-center gap-1 pt-2  '>
+            <section className='Category_Search flex items-center sm:justify-center gap-1 pt-2  '>
 
-                <div className='flex items-center bg-base p-4 sm:px-7 sm:py-4 gap-1 '>
+                <div className='CategoryIcon flex items-center bg-base p-4 sm:px-7 sm:py-4 gap-1 '>
                     <CategoryIcon props={{ w: 32, h: 32, fill: "#068DA9" }} /><p>Category</p>
                 </div>
 

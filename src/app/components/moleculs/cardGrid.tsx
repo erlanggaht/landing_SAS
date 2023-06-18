@@ -6,6 +6,9 @@ import SmartTvIcon from '@/app/assets/icons/smarttv'
 import StorageIcon from '@/app/assets/icons/storage'
 import GameIcon from '@/app/assets/icons/game'
 
+export const CardStyle = {
+    style :  'order-base shadow text-dark  flex flex-col items-center py-3 px-4 sm:px-0 sm:py-8 text-sm cursor-pointer hover:bg-dark hover:text-white transition hover:transition hover:delay-2 '
+}
 
 export default function CardGrid() {
     return (
@@ -16,7 +19,7 @@ export default function CardGrid() {
                     w: 42,
                     h: 42,
                     fill: '#068DA9'
-                }} />, style: "bg-transaparent border border-base shadow-sm text-dark  flex flex-col items-center py-3 px-4 sm:px-0 sm:py-8 text-sm"
+                }} />, style: CardStyle.style
             }} />
 
             {/* 2 */}
@@ -25,7 +28,7 @@ export default function CardGrid() {
                     w: 42,
                     h: 42,
                     fill: '#068DA9'
-                }} />, style: "bg-transaparent border border-base shadow-sm text-dark  flex flex-col items-center py-3 px-4 sm:px-0 sm:py-8 text-sm"
+                }} />, style: CardStyle.style
             }} />
 
             {/* 3 */}
@@ -34,7 +37,7 @@ export default function CardGrid() {
                     w: 42,
                     h: 42,
                     fill: '#068DA9'
-                }} />, style: "bg-transaparent border border-base shadow-sm text-dark  flex flex-col items-center py-3 px-4 sm:px-0 sm:py-8 text-sm"
+                }} />, style: CardStyle.style
             }} />
 
             {/* 4 */}
@@ -43,7 +46,7 @@ export default function CardGrid() {
                     w: 42,
                     h: 42,
                     fill: '#068DA9'
-                }} />, style: "bg-transaparent border border-base shadow-sm text-dark  flex flex-col items-center py-3 px-4 sm:px-0 sm:py-8 text-sm"
+                }} />, style: CardStyle.style
             }} />
 
             {/* 5 */}
@@ -52,7 +55,7 @@ export default function CardGrid() {
                     w: 42,
                     h: 42,
                     fill: '#068DA9'
-                }} />, style: "bg-transaparent border border-base shadow-sm text-dark  flex flex-col items-center py-3 px-4 sm:px-0 sm:py-8 text-sm"
+                }} />, style: CardStyle.style
             }} />
             
             {/* 6 */}
@@ -61,7 +64,7 @@ export default function CardGrid() {
                     w: 42,
                     h: 42,
                     fill: '#068DA9'
-                }} />, style: "bg-transaparent border border-base shadow-sm text-dark  flex flex-col items-center py-3 px-4 sm:px-0 sm:py-8 text-sm"
+                }} />, style: CardStyle.style
             }} />
         </section>
     )
