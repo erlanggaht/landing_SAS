@@ -16,11 +16,11 @@ export default function ProductsGrid({props} : PropsProductImage ) {
   const {image,title} = props
   return (
     <>
-      <div className="bg-white relative 
+      <div  className="bg-white relative 
       before:absolute before:content-['SmartWatch'] before:-left-5 before:scale-75 before:top-1 before:bg-dark before:text-white before:p-2 before:-rotate-[40deg] before:z-50 before:text-sm before:font-light before:opacity-90 before:shadow">
         <figure className='p-3 pt-7 flex justify-center items-center ' >
           <Tilt>
-            <Image alt={'productImage'} src={image} height={140} width={140}  className={`ImageProduct object-contain drop-shadow-xl w-auto h-[176px]`}/></Tilt>
+            <Image alt={'productImage'} src={image} height={140} width={140}  className={`ImageProduct object-contain drop-shadow-xl w-auto h-[176px] `}/></Tilt>
         </figure>
 
         <div className='areaDescript bg-white  mt-7'>
@@ -35,7 +35,8 @@ export default function ProductsGrid({props} : PropsProductImage ) {
 
           <div className="productsfooter flex items-center  mt-5 ">
             <p className='font-semibold px-3 text-center flex-grow'>Ready Stock!</p>
-            <button className="bg-yellowBase text-white capitalize py-3  text-sm  px-6 hover:bg-dark transition hover:transition hover:delay-75">Tanya Kami</button>
+            <a href="https://wa.me/081324063363" target="popup" 
+    onClick={()=> window.open('https://wa.me/081324063363','popup','width=600,height=600') }><button className="bg-yellowBase text-white capitalize py-3  text-sm  px-6 hover:bg-dark transition hover:transition hover:delay-75">Tanya Kami</button></a>
           </div>
         </div>
       </div>

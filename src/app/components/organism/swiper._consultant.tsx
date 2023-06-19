@@ -6,12 +6,12 @@ import Consultans from '../moleculs/consultants';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 
-
 export default function SwiperConsultans() {
     let swiperRef = useRef();
+
      return (
     <>
-    <h1 className="text-center text-4xl uppercase font-bold">company members</h1>
+    <h1 className="text-center text-4xl uppercase font-bold text-dark">company members</h1>
           <p className="text-center font-light py-1">product consultant and sales promotion </p>
         
           <Swiper

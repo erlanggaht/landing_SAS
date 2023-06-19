@@ -17,8 +17,7 @@ export default function Hero() {
             </div>
 
             <div className='mt-9 sm:mt-20 flex relative'>
-            <Button props={{text:"We Asked",style:"bg-base  font-normal px-6 sm:px-10 py-3  text-dark  shadow-xl drop-shadow rounded hover:opacity-80"}}/>
-            <Button props={{text:"Explore More",style:"bg-base  font-normal px-6 sm:px-10 py-3  text-dark  shadow-xl drop-shadow ml-2 rounded hover:opacity-80"}}/>
+            <Button props={{text:"Corporate Gallery",style:"bg-base  font-normal px-6 sm:px-10 py-3  text-dark  shadow-xl drop-shadow ml-2 rounded hover:opacity-80"}}/>
             </div>
         </section>
     )
