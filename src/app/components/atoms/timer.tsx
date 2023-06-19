@@ -17,7 +17,7 @@ export const Timer = () => {
         
   return (
     <div className="Timer">
-    <p className="center bg-dark p-1 px-6 text-white"> {d}</p>
+    <p className="center bg-dark p-1 px-6 text-white">{d}</p>
 </div>
   );
 };
