@@ -10,7 +10,8 @@ html {
 .nav {
   height: 80px;
   width: 100%;
-  position: relative;
+  position: fixed;
+  z-index: 9999;
 }
 
 .nav > .nav-header {
@@ -195,3 +196,5 @@ html {
   position: relative !important;
   border-radius: 0px !important;
 }
+
+

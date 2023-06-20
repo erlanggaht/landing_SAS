@@ -5,11 +5,11 @@ import Button from "../atoms/button"
 export default function Navigasi() {
   return (
     
-<div className="nav bg-dark sm:px-6">
+<div className="nav bg-dark sm:px-6 shadow top-0">
   <input type="checkbox" id="nav-check" />
   <div className="nav-header">
-    <div className="nav-title p-4 py-5 text-4xl drop-shadow font-bold text-white">
-      S<span className="text-yellowBase">A</span>S
+    <div className="nav-title p-4 py-4 text-5xl drop-shadow font-bold text-[#777] group hover:text-white transition-colors">
+     <a href={'/'}> S<span className="text-[#fff] group-hover:text-[#777] group-hover:transition-colors">A</span>S</a>
     </div>
   </div>
   <div className="nav-btn py-3">
@@ -21,13 +21,13 @@ export default function Navigasi() {
   </div>
   
   <div className="nav-links sm:py-3">
+    <Link href="/">Home</Link>
     <a href="#products">Products</a>
     <a href="#address">Address</a>
     <a href="https://instagram.com/sinarasihcomputer158" target="popup" 
     onClick={()=> window.open('https://instagram.com/sinarasihcomputer158','popup','width=600,height=600') }>Instagram</a>
     <div className="w-full text-right p-5 sm:inline">
-    <a href="https://wa.me/081324063363" target="popup" 
-    onClick={()=> window.open('https://wa.me/081324063363','popup','width=600,height=600') }><Button props={{text:"Hubungi Kami",style:"bg-yellowBase sm:ml-2 rounded-sm px-5 py-3 hover:opacity-90 text-white  "}}></Button></a>
+    <Link href="/pages/gallery"><Button props={{text:"Company Gallery",style:"bg-yellowBase sm:ml-2 rounded-sm px-5 py-3 hover:opacity-90 text-white  "}}></Button></Link>
     </div>
   </div>
 </div>

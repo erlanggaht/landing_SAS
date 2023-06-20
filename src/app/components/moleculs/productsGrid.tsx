@@ -35,8 +35,8 @@ export default function ProductsGrid({props} : PropsProductImage ) {
 
           <div className="productsfooter flex items-center  mt-5 ">
             <p className='font-semibold px-3 text-center flex-grow'>Ready Stock!</p>
-            <a href="https://wa.me/081324063363" target="popup" 
-    onClick={()=> window.open('https://wa.me/081324063363','popup','width=600,height=600') }><button className="bg-yellowBase text-white capitalize py-3  text-sm  px-6 hover:bg-dark transition hover:transition hover:delay-75">Tanya Kami</button></a>
+            <a href="https://web.whatsapp.com/send?phone=6281324063363" target="popup" 
+    onClick={()=> window.open('https://web.whatsapp.com/send?phone=6281324063363') }><button className="bg-yellowBase text-white capitalize py-3  text-sm  px-6 hover:bg-dark transition hover:transition hover:delay-75">Tanya Kami</button></a>
           </div>
         </div>
       </div>

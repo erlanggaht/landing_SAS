@@ -1,15 +1,14 @@
-import FooterGridList from "./components/atoms/footer_grid_list";
 import Maps from "./components/atoms/maps";
 import CardGrid from "./components/moleculs/cardGrid";
 import CategorySearch from "./components/moleculs/categorysearch";
 import Navigasi from "./components/moleculs/navigasi";
 import Timeday from "./components/moleculs/timeday";
+import Footer from "./components/organism/footer";
 import Hero from "./components/organism/hero";
 import Main2Card from "./components/organism/main2card";
 import ProductGrid from "./components/organism/productGrid";
 import Send_Me from "./components/organism/send_me";
 import SwiperConsultans from "./components/organism/swiper._consultant";
-import { textList1, textList2, textList3, textList4 } from "./components/utility/listFooter";
 
 export default function Home() {
   
@@ -19,7 +18,7 @@ export default function Home() {
       <header>
         <Navigasi />
 
-        <section className="headerMain px-6 sm:px-24 bg-white">
+        <section className="headerMain px-6 sm:px-24 bg-white mt-20">
 
           {/* Category Search */}
           <CategorySearch />
@@ -80,28 +79,7 @@ export default function Home() {
       md:grid-cols-3 xl:grid-cols-5 sm:items-baseline
       ">
       
-      <div className="grd0">
-      <h3 className="text-3xl drop-shadow italic font-bold uppercase text-white ">Sinar Asih Sumedang</h3>
-      <p className="py-0 px-1  text-sm font-light sm:mt-6">Eggi Reviana Ridwan. owner</p>
-      <p className="py-0 px-1  text-sm font-light">Gilang Ridwan. owner</p>
-      <p className="py-0 px-1  text-sm font-light">Gerin. owner</p>
-      </div>
-      
-      <div className="grd1">
-        <FooterGridList props={{text:textList1}}/>
-      </div>
-
-      <div className="grd2">
-        <FooterGridList props={{text:textList2}}/>
-      </div>
-
-      <div className="grd3">
-        <FooterGridList props={{text:textList3}}/>
-      </div>
-
-      <div className="grd4">
-        <FooterGridList props={{text:textList4}}/>
-      </div>
+      <Footer/>
 
       </footer>
     </>

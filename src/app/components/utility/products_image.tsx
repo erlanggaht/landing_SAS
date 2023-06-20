@@ -17,5 +17,4 @@ export const prodcutImage = {
     printer : printer_l220,
     storage : storage,
     tempared_glass : tg,
-
 }
