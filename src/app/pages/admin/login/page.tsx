@@ -28,9 +28,9 @@ const [input,setInput] = useState({
           username : input.username,
           password : input.password.toString(),        
         },
-        withCredentials:true
       }).then( (res) =>{
-         alert('berhasil login')
+        console.log(res)
+        //  alert(res.data.message)
         // router.push('http://localhost:3000/pages/admin/')
       }).catch((err) => alert(err.response && err.response.data.message))
   }
