@@ -22,7 +22,7 @@ const [input,setInput] = useState({
 
    async function LoginSubmit(e : FormEvent) {
       e.preventDefault();
-      const add_account = await axios('http://localhost:3002/loginAkun',{
+      const add_account = await axios('https://sinarasih-backend.vercel.app/loginAkun',{
         method : "POST",
         data : {
           username : input.username,
