@@ -1,0 +1,10 @@
+{
+    "myproxy" : {
+        "source" : 3001,
+        "target" : 3000
+    },
+    "anotherproxy" : {
+        "source" : 9999,
+        "target" : 9999
+    }
+}

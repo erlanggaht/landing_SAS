@@ -6,15 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "devs" : "next dev -p 3001 | local-ssl-proxy --source 3000 --target 3001"
   },
   "dependencies": {
     "@types/node": "^20.3.1",
     "@types/react": "^18.2.12",
     "@types/react-dom": "^18.2.5",
     "autoprefixer": "^10.4.14",
+    "axios": "^1.4.0",
     "eslint": "^8.43.0",
     "eslint-config-next": "^13.4.6",
+    "local-ssl-proxy": "^2.0.5",
+    "mkcert": "^1.5.1",
     "next": "13.4.6",
     "postcss": "^8.4.24",
     "react": "18.2.0",
