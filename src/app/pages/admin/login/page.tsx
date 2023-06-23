@@ -29,7 +29,6 @@ const [input,setInput] = useState({
           password : input.password.toString(),        
         },
         withCredentials:true,
-        headers: { 'Content-Type': 'application/json' }
       }).then( (res) =>{
         console.log(res)
         //  alert(res.data.message)
