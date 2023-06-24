@@ -1,3 +1,4 @@
+import { URL_HOST_API } from "@/app/config/url_host";
 import axios from "axios"
 import { FormEvent } from "react";
 
@@ -15,7 +16,7 @@ export default  function RegisterSubmit(e : FormEvent,props : PropsRegisterSubmi
     const {username,password,ig,deskripsi,posisi,fullname,token} = props
     e.preventDefault();
 
-    const add_karyawan_account = axios('http://localhost:3002/addAkun',{
+    const add_karyawan_account = axios(`${URL_HOST_API}/addAkun`,{
       method : "POST",
       data : {
         username : username,

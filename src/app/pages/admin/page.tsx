@@ -3,6 +3,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import {parseCookies,destroyCookie} from 'nookies'
 import { useRouter } from 'next/navigation'
+import { URL_HOST_API, URL_HOST_FRONT } from '@/app/config/url_host'
 
 export default function Admin() {
   const router = useRouter()
@@ -11,7 +12,7 @@ export default function Admin() {
   
   useEffect(()=>{
     async function asy (){
-    await axios('http://localhost:3002/getKaryawanToken',{
+    await axios(`${URL_HOST_API}/getKaryawanToken`,{
       method : "GET",
       headers : {
         Authorization : `Bearer ${token.token}`
@@ -23,7 +24,7 @@ export default function Admin() {
         path:'/',
         secure : true
       })
-      router.replace ('http://localhost:3000/pages/admin/login')
+      router.replace (`${URL_HOST_FRONT}/pages/admin/login`)
     })
   }
   asy()

@@ -2,6 +2,7 @@ import { setCookie } from "nookies"
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context"
 import axios from "axios"
 import { FormEvent } from "react"
+import { URL_HOST_API,URL_HOST_FRONT } from "@/app/config/url_host"
 
 interface PropsLoginSubmit {
 
@@ -13,7 +14,7 @@ interface PropsLoginSubmit {
   export default async function LoginSubmit(e : FormEvent,props :PropsLoginSubmit ) {
     const {username,password,router} = props
     e.preventDefault();
-    const add_account = await axios('http://localhost:3002/loginAkun',{
+    const add_account = await axios(`${URL_HOST_API}/loginAkun`,{
       method : "POST",
       data : {
         username : username,
@@ -25,6 +26,6 @@ interface PropsLoginSubmit {
         secure : true,
         path: "/"
        })
-      router.push('http://localhost:3000/pages/admin/')
-    }).catch((err) => alert(err.response && err.response.data.message))
+      router.push(`${URL_HOST_FRONT}/pages/admin/`)
+    }).catch((err) => alert(err.response ? err.response.data.message : "server bermasalah. hubungi admin"))
   }
