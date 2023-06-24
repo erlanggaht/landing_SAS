@@ -1,7 +1,7 @@
 'use client'
 import SpaceDisable from "@/app/utility/spaceDisable"
-import axios from "axios"
-import { ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, useState } from "react"
+import RegisterSubmit from "./utility/registersubmit"
 
 
 
@@ -11,11 +11,12 @@ const [input,setInput] = useState({
       password : "",
       ig : "",
       deskripsi : "",
-      posisi : "oppo",
-      fullname : ""
+      posisi : '',
+      fullname : "",
+      token : ''
 })
 
-  function handleInput(e : ChangeEvent) {
+function handleInput(e : ChangeEvent) {
     const target = e.target
     const name = (e.target as HTMLInputElement).name
     setInput({
@@ -24,51 +25,38 @@ const [input,setInput] = useState({
     })
   }
 
-   async function RegisterSubmit(e : FormEvent) {
-      e.preventDefault();
-      const add_account = await axios('http://localhost:3002/addAkun',{
-        method : "POST",
-        data : {
-          username : input.username,
-          password : input.password.toString(),        
-        }
-      }).then((res) => alert(res.data.message)).catch((err) => alert("ada kesalahan saat daftar akun"))
-
-      const add_karyawan = axios('http://localhost:3002/addKaryawan',{
-        method : "POST",
-        data : {
-          nama : input.fullname,
-          deskripsi : input.deskripsi,
-          posisi : input.posisi,
-          ig : input.ig       
-        }
-      }).then((res) => console.log(res)).catch((err)=>console.log(err))
-    }
-    console.log(input)
   return (
     <>
        <div className="row" >
     <div className="col-md-12">
-      <form className="form2" onSubmit={(e) => RegisterSubmit(e)}>
-        <h1> Sign Up </h1>
+      <form className="form2" onSubmit={(e) => RegisterSubmit(e,
+        {username : input.username,
+        password : input.password,
+        ig : input.ig,
+        deskripsi : input.deskripsi,
+        posisi : input.posisi,
+        fullname : input.fullname,
+        token : input.token
+      }
+        )}>
+        <h1 className="text-2xl"> Sign Up </h1>
         
         <fieldset>
           
           <legend><span className="number">1</span>Your Basic Info</legend>
         
-          <label htmlFor="fullname">Full Name:</label>
-          <input type="text" id="fullname" name="fullname" onChange={(e) => handleInput(e)}/>
-        
 
-          <label htmlFor="username">username: (no space)</label>
-          <input type="text" id="username" name="username" onChange={(e) => handleInput(e)} onKeyDown={(eve) => SpaceDisable(eve)}/>
+          <label htmlFor="username">Username: (no space)</label>
+          <input required type="text" id="username" name="username" onChange={(e) => handleInput(e)} onKeyDown={(eve) => SpaceDisable(eve)}/>
         
-          <label htmlFor="ig">Username Instagram: (opsional)</label>
-          <input type="text" id="ig" name="ig" onChange={(e) => handleInput(e)}/>
        
           <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password"  onChange={(e) => handleInput(e)} onKeyDown={(eve) => SpaceDisable(eve)}/>
-        
+          <input required type="password" id="password" name="password"  onChange={(e) => handleInput(e)} onKeyDown={(eve) => SpaceDisable(eve)}/>
+
+          <label htmlFor="token">Token Employe <span className="font-bold">(ask the owner or erlangga)</span></label>
+          <input required type="text" id="token" name="token"  onChange={(e) => handleInput(e)}/>
+
+
           
         </fieldset>
         <fieldset>  
@@ -78,6 +66,11 @@ const [input,setInput] = useState({
          <label htmlFor="Deskripsi">Deskripsi:</label>
           <textarea id="deskripsi" name="deskripsi" onChange={(e) => handleInput(e)}></textarea>
         
+          <label htmlFor="fullname">Full Name:</label>
+          <input type="text" required id="fullname" name="fullname" onChange={(e) => handleInput(e)}/>
+
+          <label htmlFor="ig">Username Instagram: (opsional)</label>
+          <input type="text" id="ig" name="ig" onChange={(e) => handleInput(e)}/>
        
         
          <label htmlFor="posisi">Job Role:</label>

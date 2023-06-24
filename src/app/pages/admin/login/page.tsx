@@ -1,7 +1,8 @@
 'use client'
-import axios from "axios"
 import { ChangeEvent, FormEvent, useState } from "react"
 import {useRouter} from 'next/navigation'
+import LoginSubmit from "./utility/loginsubmit"
+
 
 export default function RegisterAdmin() {
 const router = useRouter()
@@ -13,35 +14,22 @@ const [input,setInput] = useState({
   function handleInput(e : ChangeEvent) {
     const target = e.target
     const name = (e.target as HTMLInputElement).name
-
     setInput({
       ...input,
       [name] : (target as HTMLInputElement).value
     })
   }
 
-   async function LoginSubmit(e : FormEvent) {
-      e.preventDefault();
-      const add_account = await axios('https://sinarasih-backend.vercel.app/loginAkun',{
-        method : "POST",
-        data : {
-          username : input.username,
-          password : input.password.toString(),        
-        },
-        withCredentials:true,
-      }).then( (res) =>{
-        console.log(res)
-        //  alert(res.data.message)
-        // router.push('http://localhost:3000/pages/admin/')
-      }).catch((err) => alert(err.response && err.response.data.message))
-  }
-
   return (
     <>
        <div className="row" >
     <div className="col-md-12">
-      <form className="form2" onSubmit={(e) => LoginSubmit(e)}>
-        <h1> Login </h1>
+      <form className="form2" onSubmit={(e) => LoginSubmit(e,
+        {username: input.username,
+         password : input.password,
+         router:router})
+        }>
+        <h1 className="text-2xl"> Login </h1>
         
         <fieldset>
           
