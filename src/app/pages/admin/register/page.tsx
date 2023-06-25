@@ -2,6 +2,7 @@
 import SpaceDisable from "@/app/utility/spaceDisable"
 import { ChangeEvent, useState } from "react"
 import RegisterSubmit from "./utility/registersubmit"
+import { NavigasiAdmin } from "@/app/components/moleculs/navigasi_admin"
 
 
 
@@ -27,7 +28,8 @@ function handleInput(e : ChangeEvent) {
 
   return (
     <>
-       <div className="row" >
+          <NavigasiAdmin />
+       <div className="row my-12" >
     <div className="col-md-12">
       <form className="form2" onSubmit={(e) => RegisterSubmit(e,
         {username : input.username,

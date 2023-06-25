@@ -24,7 +24,7 @@ interface PropsLoginSubmit {
        alert(res.data.message)
        setCookie(null,'token',res.data.token,{
         secure : true,
-        path: "/"
+        path: "/",
        })
       router.push(`${URL_HOST_FRONT}/pages/admin/`)
     }).catch((err) => alert(err.response ? err.response.data.message : "server bermasalah. hubungi admin"))

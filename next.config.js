@@ -4,7 +4,10 @@ const nextConfig = {
         remotePatterns : [{
             hostname : 'res.cloudinary.com'
         }]
-    }
+    },
+    "compilerOptions": {
+        "baseUrl": "."
+      }
 }
 
 module.exports = nextConfig

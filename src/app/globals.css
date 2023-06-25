@@ -200,7 +200,7 @@ html {
 
 /* Admin Register Login*/
 .form2 {
-  max-width: 400px;
+  max-width: 700px;
   margin: 10px auto;
   padding: 10px 20px;
   background: #f4f7f8;
@@ -307,3 +307,22 @@ label.light {
 
 }
 
+
+/* tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+.tooltip .tooltiptext {
+  width: 120px;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
