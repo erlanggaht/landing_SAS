@@ -13,12 +13,12 @@ export default function Hero() {
             </figure>
 
             <div>
-                <h1 className='sm:text-6xl text-5xl font-bold drop-shadow leading-tight text-white'>Sinar Asih Sumedang<br /></h1>
-                <p className='sm:w-[460px] py-3 text-[#F1F1F1] font-light lowercase'>WELCOME. At your Trusted Gadget Device Partner, feel free to ask us and visit our store</p>
+                <h1 className='sm:text-6xl text-5xl font-bold drop-shadow leading-tight text-white sm:text-left'>Sinar Asih Sumedang<br /></h1>
+                <p className='sm:w-[460px] py-2 px-1 text-[#F1F1F1] font-light lowercase'>selamat datang. di mitra perangkat gadget terpercaya Anda, jangan ragu untuk bertanya kepada kami dan kunjungi toko kami. Melayani Cash On Delivery (COD)</p>
             </div>
 
             <div className='mt-9 sm:mt-20 flex relative'>
-           <Link href={'https://web.whatsapp.com/send?phone=6281324063363'}><Button props={{text:"Contact us",style:"bg-base  font-normal px-6 sm:px-10 py-3  text-dark  shadow-xl drop-shadow ml-2 rounded hover:opacity-80"}}/></Link>
+           <Link href={'https://web.whatsapp.com/send?phone=6281324063363'}><Button props={{text:"Hubungi Kami",style:"bg-base  font-normal px-6 sm:px-8 py-3  text-dark  shadow-xl drop-shadow ml-2 rounded hover:opacity-80"}}/></Link>
             </div>
         </section>
     )

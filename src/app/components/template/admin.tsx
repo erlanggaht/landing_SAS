@@ -3,7 +3,7 @@ import GlobalState from "@/app/utility/global_state/admin"
 import { getAdmin } from "@/app/utility/redux/feature/adminSlice"
 import Image from "next/image"
 import { ChangeEvent, FormEvent, Key, useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import ilustator_profile from '@/app/assets/ilustrator/undraw_personal_info_re_ur1n.svg'
 import Button_Edit from "../moleculs/button_editprof"
 import { useRouter } from "next/navigation"
@@ -11,6 +11,10 @@ import { URL_HOST_API, URL_HOST_FRONT } from "@/app/config/url_host"
 import EditIcon from "@/app/assets/icons/edit"
 import Button from "../atoms/button"
 import axios from "axios"
+import { NavigasiAdmin } from "../moleculs/navigasi_admin"
+import DeleteAdmin from "@/app/pages/admin/API/deleteAdmin"
+import { updateToken } from "@/app/utility/redux/feature/tokenSlice"
+import { parseCookies } from "nookies"
 
 
 // Component Input Edit Profile
@@ -119,10 +123,10 @@ export const EditProfile = ({ setEditProfile }: any) => {
             <div className="w-full text-right flex justify-end" >
 
                 {/* Cancel Button */}
-                <div className="w-fulf flex-shrink-0 text-right" onClick={() => setEditProfile(false)}><div className="text-right inline-flex items-center  bg-white font-semibold p-2 px-3 hover:bg-base capitalize gap-2"><button className=" text-dark">Cancel</button></div></div>
+                <div className="w-fulf flex-shrink-0 text-right" onClick={() => setEditProfile(false)}><div className="text-right inline-flex items-center  bg-white font-semibold p-2 px-3 hover:bg-base capitalize gap-2 active:opacity-50"><button className=" text-dark ">Cancel</button></div></div>
 
-                {/* Submit Button */}                
-                <div className="text-right inline-flex items-center  bg-white text-dark font-semibold p-2 px-3 hover:bg-base capitalize gap-2"><EditIcon props={{ w: 22, h: 22, fill: "#333" }} /><Button props={{ text: "Update Profile", style: "" }}></Button></div>
+                {/* Submit Button */}
+                <div className="text-right inline-flex items-center  bg-white text-dark font-semibold p-2 px-3 hover:bg-base capitalize gap-2 active:opacity-50"><EditIcon props={{ w: 22, h: 22, fill: "#333" }} /><Button props={{ text: "Update Profile", style: "" }}></Button></div>
             </div>
 
         </form>
@@ -131,6 +135,7 @@ export const EditProfile = ({ setEditProfile }: any) => {
 
 export default function AdminPage() {
     const router = useRouter()
+    const tokenCookie = parseCookies().token
     const [editProfile, setEditProfile] = useState(false)
     const dispatch = useDispatch<any>()
     const { loadingState, responseState, rejectState } = GlobalState() // UseSelector Global
@@ -144,59 +149,72 @@ export default function AdminPage() {
     useEffect(() => {
         dispatch(getAdmin())
     }, [dispatch])
+
+
+
     return (
         <>
-            {/* {loadingState ? <p>Loading ....</p>:  */}
-            <div className="h-screen grid place-items-center">
-                {responseState && responseState.map((m: any, i: Key) => {
-                    return (
-                        <main key={i}>
-                            <h1 className='text-4xl p-4'>Hello, <span className='font-bold text-dark'>{m.nama}</span></h1>
-                            <section className='bg-white font-light capitalize shadow rounde-md p-4 mx-6 flex md:flex-row items-center flex-wrap-reverse justify-between gap-4'>
-                                <div className="table_profile mx-0 xl:mx-auto w-full lg:w-auto" >
-                                {editProfile || <h1 className="font-bold">Profile</h1>}
+            {/* {loadingState ? <div className="bg-base h-screen w-full grid place-content-center"><LoadingPage/></div>:  */}
+            <>
+                <NavigasiAdmin />
+                <div className="my-12 mx-32">
+                    {responseState && responseState.map((m: any, i: Key) => {
+                        return (
+                            <main key={i}>
+                                <h1 className='text-4xl p-6 sm:text-center'>Hello, <span className='font-bold text-dark inline-block sm:inline'>{m.nama}</span></h1>
+                                <section className='bg-white font-light capitalize shadow rounde-md p-4 mx-6 flex md:flex-row items-center flex-wrap-reverse justify-between gap-4'>
+                                    <div className="table_profile mx-0 xl:mx-auto w-full lg:w-auto" >
+                                        {editProfile || <h1 className="font-bold">Profile</h1>}
 
-                                    {editProfile ? <EditProfile setEditProfile={setEditProfile} /> :
-                                        <>
-                                            <div className='flex'>
-                                                <p className='rw-lf p-2 w-full lg:w-[120px] border-b border-b-gray-300 '>id</p>
-                                                <p className='rw-rg p-2 w-full lg:w-[320px] border-b border-b-gray-300 '>{loadingState ? "loading" : m.id}</p>
-                                            </div>
+                                        {editProfile ? <EditProfile setEditProfile={setEditProfile} /> :
+                                            <>
+                                                <div className='flex'>
+                                                    <p className='rw-lf p-2 w-full lg:w-[120px] border-b border-b-gray-300 '>id</p>
+                                                    <p className='rw-rg p-2 w-full lg:w-[320px] border-b border-b-gray-300 '>{loadingState ? "loading" : m.id}</p>
+                                                </div>
 
-                                            <div className='flex '>
-                                                <p className='rw-lf p-2 w-full lg:w-[120px] border-b border-b-gray-300'>nama</p>
-                                                <p className='rw-rg p-2 w-full lg:w-[320px] border-b  border-b-gray-300'>{loadingState ? "loading" : m.nama}</p>
-                                            </div>
-                                            <div className='flex '>
-                                                <p className='rw-lf p-2 w-full lg:w-[120px] border-b border-b-gray-300'>deskripsi</p>
-                                                <p className='rw-rg p-2 w-full lg:w-[320px] border-b border-b-gray-300'>{loadingState ? "loading" : m.deskripsi}</p>
-                                            </div>
-                                            <div className='flex '>
-                                                <p className='rw-lf p-2 w-full lg:w-[120px] border-b border-b-gray-300'>Instagram</p>
-                                                <p className='rw-rg p-2 w-full lg:w-[320px] border-b border-b-gray-300'>{loadingState ? "loading" : m.ig}</p>
-                                            </div>
-                                            <div className='flex '>
-                                                <p className='rw-lf p-2 w-full lg:w-[120px] border-b border-b-gray-300'>posisi</p>
-                                                <p className='rw-rg p-2 w-full lg:w-[320px] border-b border-b-gray-300'>{loadingState ? "loading" : m.posisi}</p>
-                                            </div>
+                                                <div className='flex '>
+                                                    <p className='rw-lf p-2 w-full lg:w-[120px] border-b border-b-gray-300'>nama</p>
+                                                    <p className='rw-rg p-2 w-full lg:w-[320px] border-b  border-b-gray-300'>{loadingState ? "loading" : m.nama}</p>
+                                                </div>
+                                                <div className='flex '>
+                                                    <p className='rw-lf p-2 w-full lg:w-[120px] border-b border-b-gray-300'>deskripsi</p>
+                                                    <p className='rw-rg p-2 w-full lg:w-[320px] border-b border-b-gray-300 lowercase '>{loadingState ? "loading" : m.deskripsi}</p>
+                                                </div>
+                                                <div className='flex '>
+                                                    <p className='rw-lf p-2 w-full lg:w-[120px] border-b border-b-gray-300'>Instagram</p>
+                                                    <p className='rw-rg p-2 w-full lg:w-[320px] border-b border-b-gray-300'>{loadingState ? "loading" : m.ig}</p>
+                                                </div>
+                                                <div className='flex '>
+                                                    <p className='rw-lf p-2 w-full lg:w-[120px] border-b border-b-gray-300'>posisi</p>
+                                                    <p className='rw-rg p-2 w-full lg:w-[320px] border-b border-b-gray-300'>{loadingState ? "loading" : m.posisi}</p>
+                                                </div>
 
-                                            <div className="my-3"><Button_Edit props={{setEditProfile}} /></div>
-                                        </>}
+                                                <div className="my-3 flex justify-end gap-4">
+                                                    <button className="active:opacity-50 cursor-pointer text-right inline-flex items-center  bg-white text-dark font-semibold p-2 px-3 hover:bg-base capitalize gap-2" onClick={(e) => DeleteAdmin(e, m.id,router,m.nama)}>Delete Profile</button>
+                                                    <div className="flex-shrink-0"><Button_Edit props={{ setEditProfile }} /></div>
+                                                </div>
 
-                                </div>
+                                            </>
+                                        }
 
-                                <div className="ilustrator_profile  mx-0 sm:mx-auto " >
-                                    <figure>
-                                        <div ><Image src={ilustator_profile} alt="ilustrator_profile" width={430} height={430} /></div>
-                                    </figure>
-                                </div>
-                            </section>
-                        </main>
-                    )
-                })}
-            </div>
-            {/* } */}
+                                    </div>
+
+                                    <div className="ilustrator_profile  mx-0 sm:mx-auto " >
+                                        <figure>
+                                            <div ><Image src={ilustator_profile} alt="ilustrator_profile" width={430} height={430} /></div>
+                                        </figure>
+                                    </div>
+                                </section>
+                            </main>
+                        )
+                    })}
+                </div>
+            </>
+            {/* }  */}
 
         </>
     )
 }
+
+

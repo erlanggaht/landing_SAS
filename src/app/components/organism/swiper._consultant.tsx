@@ -11,8 +11,8 @@ export default function SwiperConsultans() {
 
      return (
     <>
-    <h1 className="text-center text-4xl uppercase font-bold text-dark">company members</h1>
-          <p className="text-center font-light py-1">product consultant and sales promotion </p>
+    <h1 className="text-center text-4xl uppercase font-bold text-dark">Anggota Perusahaan</h1>
+          <p className="text-center font-light py-1">Konsultan Produk dan Sales Promosi </p>
         
           <Swiper
            modules={[Navigation, Pagination, Scrollbar, A11y]}

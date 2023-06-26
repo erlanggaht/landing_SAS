@@ -3,10 +3,12 @@ import SpaceDisable from "@/app/utility/spaceDisable"
 import { ChangeEvent, useState } from "react"
 import RegisterSubmit from "./utility/registersubmit"
 import { NavigasiAdmin } from "@/app/components/moleculs/navigasi_admin"
+import { useRouter } from "next/navigation"
 
 
 
 export default function RegisterAdmin() {
+const router =useRouter()
 const [input,setInput] = useState({
       username : "",
       password : "",
@@ -38,7 +40,8 @@ function handleInput(e : ChangeEvent) {
         deskripsi : input.deskripsi,
         posisi : input.posisi,
         fullname : input.fullname,
-        token : input.token
+        token : input.token,
+        router : router
       }
         )}>
         <h1 className="text-2xl"> Sign Up </h1>

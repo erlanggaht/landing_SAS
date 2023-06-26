@@ -7,12 +7,12 @@ export default function Timeday() {
   return (
     <>
           <div className="flex gap-2 sm:items-center items-center flex-wrap">
-            <h2 className="font-bold">Deal Of the day</h2>
-            <p className="pl-3">offers end</p>
+            <h2 className="font-bold">Promo Hari Ini</h2>
+            <p className="pl-3">penawaran dimulai</p>
             <div className='hidden sm:block'>{<Timer/>}</div>
           </div>
           <div className='sm:hidden'>{<Timer/>}</div>
-          <div><p className='text-right'>View All</p></div>
+          <div><p className='text-right'>Lihat Semua</p></div>
           </>
   )
 }

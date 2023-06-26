@@ -1,12 +1,15 @@
 'use client'
-import { ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import { useRouter } from 'next/navigation'
 import LoginSubmit from "./utility/loginsubmit"
 import Navigasi from "@/app/components/moleculs/navigasi"
 import { NavigasiAdmin } from "@/app/components/moleculs/navigasi_admin"
+import GlobalState from "@/app/utility/global_state/admin"
+import { parseCookies } from "nookies"
+import { URL_HOST_FRONT } from "@/app/config/url_host"
 
 
-export default function RegisterAdmin() {
+export default function LoginAdmin() {
   const router = useRouter()
   const [input, setInput] = useState({
     username: "",
@@ -22,6 +25,12 @@ export default function RegisterAdmin() {
     })
   }
 
+  useEffect(()=>{
+    const tokenCookie = parseCookies().token
+    if(tokenCookie)router.push(`${URL_HOST_FRONT}/pages/admin`)
+  },[])
+  
+
   return (
     <>
     <div className="absolute top-0 right-0 left-0">
@@ -34,7 +43,7 @@ export default function RegisterAdmin() {
               {
                 username: input.username,
                 password: input.password,
-                router: router
+                router: router,
               })
             }>
               <h1 className="text-2xl"> Login </h1>

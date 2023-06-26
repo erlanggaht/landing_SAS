@@ -32,7 +32,7 @@ export default function CardGrid() {
 
             {/* 3 */}
             <Card_Grid props={{
-                text: "Audio Accessories", icon: <AudioIcon props={{
+                text: "Aksesoris Audio", icon: <AudioIcon props={{
                     w: 42,
                     h: 42,
                     fill: '#888'
@@ -59,7 +59,7 @@ export default function CardGrid() {
             
             {/* 6 */}
             <Card_Grid props={{
-                text: "Game Devices", icon: <GameIcon props={{
+                text: "Perangkat Game", icon: <GameIcon props={{
                     w: 42,
                     h: 42,
                     fill: '#888'

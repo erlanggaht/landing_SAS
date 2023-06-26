@@ -21,14 +21,13 @@ export default function Navigasi() {
   </div>
   
   <div className="nav-links sm:py-3">
-    <Link href="/">Home</Link>
-    <a href="#products">Products</a>
-    <a href="#address">Address</a>
+    <a href="#address">Alamat</a>
+    <a href="#products">Produk</a>
     <a href="https://instagram.com/sinarasihcomputer158" target="popup" 
     onClick={()=> window.open('https://instagram.com/sinarasihcomputer158','popup','width=600,height=600') }>Instagram</a>
     <Link href="pages/admin" >Admin</Link>
     <div className="w-full text-right p-5 sm:inline">
-    <Link href="/pages/gallery"><Button props={{text:"Company Gallery",style:"bg-yellowBase sm:ml-2 rounded-sm px-5 py-3 hover:opacity-90 text-white  "}}></Button></Link>
+    <Link href="/pages/gallery"><Button props={{text:"Galeri Perusahaan",style:"bg-yellowBase sm:ml-2 rounded-sm px-5 py-3 hover:opacity-90 text-white  "}}></Button></Link>
     </div>
   </div>
 </div>

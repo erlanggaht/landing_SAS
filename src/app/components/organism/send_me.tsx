@@ -5,10 +5,10 @@ import React from 'react'
 export default function Send_Me() {
   return (
     <>
-         <h1 className="text-2xl  sm:text-4xl font-bold text-dark">Send email</h1>
+         <h1 className="text-2xl  sm:text-4xl font-bold text-dark">Kirim Email</h1>
         <div className="relative">
         <div className='flex sm:block'>
-        <input placeholder="Email address" className="py-3 px-4 bg-yellowBase text-sm  text-white placeholder:text-white sm:w-[320px] w-[150px] "/>
+        <input placeholder="Alamat Email" className="py-3 px-4 bg-yellowBase text-sm  text-white placeholder:text-white sm:w-[320px] w-[150px] "/>
         <button className="right-2 top-[13px] absolute sm:hidden"><SendIcon props={{w:20,h:20,fill:'white'}}/></button>
         </div>
         <button className="hidden sm:block right-2 top-[13px] absolute"><SendIcon props={{w:20,h:20,fill:'white'}}/></button>

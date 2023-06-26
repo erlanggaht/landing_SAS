@@ -8,16 +8,15 @@ interface PropsProductImage {
     props : {
       image : StaticImageData,
       title : string,
-      
     }
 }
 
-export default function ProductsGrid({props} : PropsProductImage ) {
-  const {image,title} = props
+export default  function ProductsGrid({props} : PropsProductImage ) {
+  const {image,title} =  props
   return (
     <>
-      <div  className="bg-white relative 
-      before:absolute before:content-['SmartWatch'] before:-left-5 before:scale-75 before:top-1 before:bg-dark before:text-white before:p-2 before:-rotate-[40deg] before:z-50 before:text-sm before:font-light before:opacity-90 before:shadow">
+      <div  className={`bg-white relative 
+      before:absolute before:content-['hot-promo'] before:-left-5 before:scale-75 before:top-1 before:bg-dark before:text-white before:p-2 before:-rotate-[40deg] before:z-50 before:text-sm before:font-light before:opacity-90 before:shadow`}>
         <figure className='p-3 pt-7 flex justify-center items-center ' >
           <Tilt>
             <Image alt={'productImage'} src={image} height={140} width={140}  className={`ImageProduct object-contain drop-shadow-xl w-auto h-[176px] `}/></Tilt>
@@ -34,7 +33,7 @@ export default function ProductsGrid({props} : PropsProductImage ) {
           </div>
 
           <div className="productsfooter flex items-center  mt-5 ">
-            <p className='font-semibold px-3 text-center flex-grow'>Ready Stock!</p>
+            <p className='font-semibold px-3 text-center flex-grow'>Stok Ready!</p>
             <a href="https://web.whatsapp.com/send?phone=6281324063363" target="popup" 
     onClick={()=> window.open('https://web.whatsapp.com/send?phone=6281324063363') }><button className="bg-yellowBase text-white capitalize py-3  text-sm  px-6 hover:bg-dark transition hover:transition hover:delay-75">Tanya Kami</button></a>
           </div>

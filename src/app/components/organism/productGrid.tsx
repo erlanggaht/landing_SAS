@@ -8,7 +8,7 @@ export default function ProductGrid() {
     <>
      <ProductsGrid props={{
             image: prodcutImage.miband, 
-            title : 'Miband 5 (black)'
+            title : 'Miband 5 (black)',
           }} />
           <ProductsGrid props={{ 
             image: prodcutImage.laptop_asus, 
