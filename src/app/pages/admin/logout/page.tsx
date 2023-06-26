@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { destroyCookie, parseCookies } from "nookies";
 import { useEffect } from "react";
 
-export default function logout() {
+export default function Logout() {
   const router = useRouter()
   useEffect(() => {
     destroyCookie(null,'token',{
