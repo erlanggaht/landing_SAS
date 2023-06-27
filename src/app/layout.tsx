@@ -1,7 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { Providers } from './utility/redux/provider'
-
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +20,8 @@ export default function RootLayout({
       <body className={`${inter.className}`}>
         <Providers>
         {children}
+        <Script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript" defer 
+      ></Script>
         </Providers>
         </body>
     </html>

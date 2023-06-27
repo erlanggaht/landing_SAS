@@ -83,13 +83,13 @@ export const EditProfile = ({ setEditProfile }: any) => {
                 return <section key={i} className="key_doank">
                     <h1 className="font-bold text-center text-xl py-4">Form Update</h1>
                     <div className="flex sm:flex-row p-2 flex-col items-center">
-                        <label htmlFor="nama" className="w-32">Nama</label>
+                        <label htmlFor="nama" className="w-full sm:w-32">Nama</label>
                         <input className="w-full py-2 px-2 border-b" type="text" placeholder={m.nama} id='nama' name="nama" onChange={(e) => handleInput(e)} min={3} minLength={3} maxLength={35} ></input>
                     </div>
 
 
                     <div className="flex sm:flex-row p-2 flex-col items-center">
-                        <label htmlFor="ig" className="w-32">Instagram</label>
+                        <label htmlFor="ig" className="w-full sm:w-32 ">Instagram</label>
                         <input className="w-full py-2 px-2 border-b" type="text" placeholder={m.ig} id='ig' name="ig" onChange={(e) => handleInput(e)} min={3} minLength={3} maxLength={35} ></input>
                     </div>
 
@@ -158,39 +158,40 @@ export default function AdminPage() {
                 <NavigasiAdmin />
                 <div className="my-12 sm:mx-32">
                     {responseState && responseState.map((m: any, i: Key) => {
+                        console.log(m)
                         return (
                             <main key={i}>
                                 <h1 className='text-4xl p-6 sm:text-center'>Hello, <span className='font-bold text-dark inline-block sm:inline'>{m.nama}</span></h1>
-                                <section className='bg-white font-light capitalize shadow rounde-md p-4 mx-6 flex md:flex-row items-center flex-wrap-reverse justify-between gap-4'>
+                                <section className='bg-white font-light capitalize shadow rounde-md p-4 mx-6 flex md:flex-row items-center justify-center flex-wrap-reverse sm:justify-between gap-4'>
                                     <div className="table_profile mx-0 xl:mx-auto w-full lg:w-auto" >
                                         {editProfile || <h1 className="font-bold text-center text-xl py-4">Profile</h1>}
 
                                         {editProfile ? <EditProfile setEditProfile={setEditProfile} /> :
                                             <>
                                                 <div className='flex'>
-                                                    <p className='rw-lf p-2 w-[120px] lg:w-[120px] border-b border-b-gray-300 '>id</p>
-                                                    <p className='rw-rg p-2 w-full lg:w-[380px] border-b border-b-gray-300 '>{loadingState ? "loading" : m.id}</p>
+                                                    <p className='rw-lf p-2 w-[120px] lg:w-[200px] border-b border-b-gray-300 '>id</p>
+                                                    <p className='rw-rg p-2 w-full lg:w-[260px] border-b border-b-gray-300 '>{loadingState ? "loading" : m.id}</p>
                                                 </div>
 
                                                 <div className='flex '>
-                                                    <p className='rw-lf p-2 w-[120px] lg:w-[120px] border-b border-b-gray-300'>nama</p>
-                                                    <p className='rw-rg p-2 w-full lg:w-[380px] border-b  border-b-gray-300'>{loadingState ? "loading" : m.nama}</p>
+                                                    <p className='rw-lf p-2 w-[120px] lg:w-[200px] border-b border-b-gray-300'>nama</p>
+                                                    <p className='rw-rg p-2 w-full lg:w-[260px] border-b  border-b-gray-300'>{loadingState ? "loading" : m.nama}</p>
                                                 </div>
                                                 <div className='flex '>
-                                                    <p className='rw-lf p-2 w-[120px] lg:w-[120px] border-b border-b-gray-300'>deskripsi</p>
-                                                    <p className='rw-rg p-2 w-full lg:w-[380px] border-b border-b-gray-300 lowercase '>{loadingState ? "loading" : m.deskripsi}</p>
+                                                    <p className='rw-lf p-2 w-[120px] lg:w-[200px] border-b border-b-gray-300'>deskripsi</p>
+                                                    <p className='rw-rg p-2 w-full lg:w-[260px] border-b border-b-gray-300 lowercase '>{loadingState ? "loading" : m.deskripsi}</p>
                                                 </div>
                                                 <div className='flex '>
-                                                    <p className='rw-lf p-2 w-[120px] lg:w-[120px] border-b border-b-gray-300'>Instagram</p>
-                                                    <p className='rw-rg p-2 w-full lg:w-[380px] border-b border-b-gray-300'>{loadingState ? "loading" : m.ig}</p>
+                                                    <p className='rw-lf p-2 w-[120px] lg:w-[200px] border-b border-b-gray-300'>Instagram</p>
+                                                    <p className='rw-rg p-2 w-full lg:w-[260px] border-b border-b-gray-300'>{loadingState ? "loading" : m.ig}</p>
                                                 </div>
                                                 <div className='flex '>
-                                                    <p className='rw-lf p-2 w-[120px] lg:w-[120px] border-b border-b-gray-300'>posisi</p>
-                                                    <p className='rw-rg p-2 w-full lg:w-[380px] border-b border-b-gray-300'>{loadingState ? "loading" : m.posisi}</p>
+                                                    <p className='rw-lf p-2 w-[120px] lg:w-[200px] border-b border-b-gray-300'>posisi</p>
+                                                    <p className='rw-rg p-2 w-full lg:w-[260px] border-b border-b-gray-300'>{loadingState ? "loading" : m.posisi}</p>
                                                 </div>
 
                                                 <div className="my-3 flex justify-end gap-4">
-                                                    <button className="active:opacity-50 cursor-pointer text-right inline-flex items-center  bg-white text-dark font-semibold p-2 px-3 hover:bg-base capitalize gap-2" onClick={(e) => DeleteAdmin(e, m.id,router,m.nama)}>Delete Profile</button>
+                                                    <button className="active:opacity-50 cursor-pointer text-right inline-flex items-center  bg-white text-dark font-semibold p-2 px-3 hover:bg-base capitalize gap-2" onClick={(e) => DeleteAdmin(e, m.id, router, m.nama)}>Delete Profile</button>
                                                     <div className="flex-shrink-0"><Button_Edit props={{ setEditProfile }} /></div>
                                                 </div>
 
@@ -198,12 +199,12 @@ export default function AdminPage() {
                                         }
 
                                     </div>
-
-                                    <div className="ilustrator_profile  mx-0 sm:mx-auto " >
-                                        <figure>
-                                            <div ><Image src={ilustator_profile} alt="ilustrator_profile" width={370} height={370} /></div>
-                                        </figure>
-                                    </div>
+                                    <div className="ilustrator_profile  mx-0 sm:mx-auto my-6 " >
+                                                    <figure>
+                                                        {/* @ts-ignore */}
+                                                        <div ><Image src={editProfile ? m.image  : ilustator_profile} alt={editProfile ? m.image  : ilustator_profile} width={280} height={280} className="rounded-full" /></div>
+                                                    </figure>
+                                                </div>
                                 </section>
                             </main>
                         )

@@ -10,11 +10,13 @@ interface PropsRegisterSubmit {
         posisi : string,
         fullname : string,
         token : string,
-        router : any
+        router : any,
+        asset_id : string | any
 }
 
 export default  function RegisterSubmit(e : FormEvent,props : PropsRegisterSubmit) {
-    const {username,password,ig,deskripsi,posisi,fullname,token,router} = props
+    const {username,password,ig,deskripsi,posisi,fullname,token,router,asset_id} = props
+ console.log(asset_id)
     e.preventDefault();
 
     const add_karyawan_account = axios(`${URL_HOST_API}/addAkun`,{
@@ -27,11 +29,14 @@ export default  function RegisterSubmit(e : FormEvent,props : PropsRegisterSubmi
             nama : fullname,
             deskripsi : deskripsi,
             posisi : posisi,
-            ig : ig       
+            ig : ig,
+            
+            CloudinaryID : asset_id 
       }
     }).then((res) => {
+      console.log(res)
       alert(res && res.data.message)
-      router.replace(`${URL_HOST_FRONT}/pages/admin/`)
+      router.replace(`${URL_HOST_FRONT}/pages/admin/login`)
     })
       .catch((err) => alert(err.response && err.response.data.message))
   }
