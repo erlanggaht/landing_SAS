@@ -30,7 +30,8 @@ class CloudinaryUploadWidget extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log("Done! Here is the image info: ", result.info);
+
+          // Simpan ID_ASSET Di Session Storage
           sessionStorage.setItem('asset_id',result.info.asset_id)
           document
             .getElementById("uploadedimage")
@@ -52,7 +53,7 @@ class CloudinaryUploadWidget extends Component {
 
   render() {
     return (
-      <div id="upload_widget" className="p-3 text-white rounded-sm bg-yellowBase before:content[''] before:h-full before:w-full before:absolute before:bg-transparent before:top-0 before:left-0 ">
+      <div id="upload_widget" className="p-3 text-white rounded-sm bg-yellowBase before:content[''] before:h-full before:w-full before:absolute before:bg-transparent before:top-0 before:left-0 before:cursor-pointer ">
         Upload
       </div>
     );

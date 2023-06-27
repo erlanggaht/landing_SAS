@@ -7,19 +7,22 @@ import { useDispatch } from "react-redux"
 import ilustator_profile from '@/app/assets/ilustrator/undraw_personal_info_re_ur1n.svg'
 import Button_Edit from "../moleculs/button_editprof"
 import { useRouter } from "next/navigation"
-import { URL_HOST_API, URL_HOST_FRONT } from "@/app/config/url_host"
+import { URL_HOST_API } from "@/app/config/url_host"
 import EditIcon from "@/app/assets/icons/edit"
+import EditProfiles from "@/app/assets/icons/editProfile"
 import Button from "../atoms/button"
 import axios from "axios"
 import { NavigasiAdmin } from "../moleculs/navigasi_admin"
 import DeleteAdmin from "@/app/pages/admin/API/deleteAdmin"
 import { parseCookies } from "nookies"
+import LoadingPage from "../moleculs/loading"
+import CloudinaryUploadWidget from "./cloudinary"
 
 
 // Component Input Edit Profile
 export const EditProfile = ({ setEditProfile }: any) => {
     const dispatch = useDispatch<any>()
-    const { loadingState, responseState, rejectState } = GlobalState() // UseSelector Global
+    const {  responseState,  } = GlobalState() // UseSelector Global
     const [input, setInput] = useState({
         nama: "",
         deskripsi: "",
@@ -43,6 +46,7 @@ export const EditProfile = ({ setEditProfile }: any) => {
                 })
             })
         }
+        
     }, [responseState])
 
     // Handle Input
@@ -77,6 +81,14 @@ export const EditProfile = ({ setEditProfile }: any) => {
             alert(err.response && err.response.data.message)
         })
     }
+
+// Button Upload
+useEffect(()=>{
+    // @ts-ignore
+    document.querySelector('#upload_widget').style.cssText = `background-color:transparent;color:transaparent`
+},[])
+   
+
     return (
         <form className="my-6 px-1 sm:px-5" onSubmit={(e) => handleSubmit(e)}>
             {responseState && responseState.map((m: any, i: Key) => {
@@ -141,15 +153,21 @@ export default function AdminPage() {
 
     // Validasi Page Redirect Jika Tidak Ada token login dan request api gagal atau reject request    
     useEffect(() => {
-        if (rejectState) location.href = '/pages/admin/login'
+        if (rejectState) router.push ('/pages/admin/login')
     }, [rejectState])
 
     // Get API Via Redux dispatch
     useEffect(() => {
         dispatch(getAdmin())
+
+        return () => {
+            dispatch(getAdmin())
+
+        }
     }, [dispatch])
 
 
+    
 
     return (
         <>
@@ -202,7 +220,10 @@ export default function AdminPage() {
                                     <div className="ilustrator_profile  mx-0 sm:mx-auto my-6 " >
                                                     <figure>
                                                         {/* @ts-ignore */}
-                                                        <div ><Image src={editProfile ? m.image  : ilustator_profile} alt={editProfile ? m.image  : ilustator_profile} width={280} height={280} className="rounded-full" /></div>
+                                                        <div className="z-50 relative"  >
+                                                            {editProfile && <CloudinaryUploadWidget />}
+                                                            <Image src={editProfile ? m.image  : ilustator_profile} alt={editProfile ? m.image  : ilustator_profile} width={280} height={280} className="rounded-full mt-2" /></div>
+                                                            {editProfile && <div className="flex items-center gap-2 justify-center mt-3 font-bold"><EditProfiles props={{fill:"#222",w:32,h:32}} />Ubah Foto <span className="font-light text-sm">(klik foto)</span></div>}
                                                     </figure>
                                                 </div>
                                 </section>

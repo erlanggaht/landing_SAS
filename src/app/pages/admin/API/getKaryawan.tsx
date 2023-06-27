@@ -4,7 +4,6 @@ import {parseCookies} from 'nookies'
 
 export default async function GetKaryawan() {
     const token = parseCookies().token
-
     const response = await axios(`${URL_HOST_API}/getKaryawanToken`,{
         method : "GET",
         headers : {

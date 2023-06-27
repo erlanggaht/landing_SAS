@@ -7,9 +7,14 @@ import { useRouter } from "next/navigation"
 import { parseCookies } from "nookies"
 import { URL_HOST_FRONT } from "@/app/config/url_host"
 import CloudinaryUploadWidget from "@/app/components/template/cloudinary"
+import GlobalState from "@/app/utility/global_state/admin"
+import { useDispatch } from "react-redux"
+import { getAdmin } from "@/app/utility/redux/feature/adminSlice"
 
 export default function RegisterAdmin() {
   const router = useRouter()
+  const dispatch = useDispatch()
+  const {responseState,rejectState } = GlobalState()
   const [input, setInput] = useState({
     username: "",
     password: "",
@@ -32,10 +37,24 @@ export default function RegisterAdmin() {
   }
 
 
-  useEffect(() => {
-    const tokenCookie = parseCookies().token
-    if (tokenCookie) router.push(`${URL_HOST_FRONT}/pages/admin`)
-  }, [])
+  useEffect(()=>{
+    
+    if(responseState && responseState.length > 0) {
+      router.push('/pages/admin')
+    }
+    return () => {
+      if(rejectState) {
+        router.push('/pages/admin/login')
+      }
+    }
+    },[responseState])
+  
+    useEffect(() => {
+      // @ts-ignore
+      dispatch(getAdmin())
+      
+   
+  }, [dispatch])
 
 
   return (

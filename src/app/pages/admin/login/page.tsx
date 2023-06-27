@@ -3,12 +3,16 @@ import { ChangeEvent, useEffect, useState } from "react"
 import { useRouter } from 'next/navigation'
 import LoginSubmit from "./utility/loginsubmit"
 import { NavigasiAdmin } from "@/app/components/moleculs/navigasi_admin"
-import { parseCookies } from "nookies"
-import { URL_HOST_FRONT } from "@/app/config/url_host"
+import { useDispatch } from "react-redux"
+import { getAdmin } from "@/app/utility/redux/feature/adminSlice"
+import GlobalState from "@/app/utility/global_state/admin"
+
 
 
 export default function LoginAdmin() {
   const router = useRouter()
+  const dispatch = useDispatch()
+  const {responseState,rejectState } = GlobalState()
   const [input, setInput] = useState({
     username: "",
     password: "",
@@ -23,11 +27,30 @@ export default function LoginAdmin() {
     })
   }
 
+    
+
+
+
   useEffect(()=>{
-    const tokenCookie = parseCookies().token
-    if(tokenCookie)router.push(`${URL_HOST_FRONT}/pages/admin`)
-  },[])
-  
+    
+  if(responseState && responseState.length > 0) {
+    router.push('/pages/admin')
+  }
+  return () => {
+    if(rejectState) {
+      router.push('/pages/login')
+    }
+  }
+  },[responseState])
+
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(getAdmin())
+    
+ 
+}, [dispatch])
+
+
 
   return (
     <>

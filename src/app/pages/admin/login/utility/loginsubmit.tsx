@@ -1,5 +1,5 @@
 'use client'
-import {  setCookie } from "nookies"
+import {  parseCookies, setCookie } from "nookies"
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context"
 import axios from "axios"
 import { FormEvent } from "react"
@@ -21,12 +21,12 @@ interface PropsLoginSubmit {
         username : username,
         password : password.toString(),        
       },
-    }).then(async (res) =>{
+    }).then((res) =>{
        alert(res.data.message)
-       setCookie(null,'token',res.data.token,{
+        setCookie(null,'token',res.data.token,{
         secure : true,
         path: "/",
        })
-         router.replace(`${URL_HOST_FRONT}/pages/admin/`)
-    }).catch((err) => alert(err.response &&  err.response.data.message ))
+       router.replace(`${URL_HOST_FRONT}/pages/admin/`)
+    }).catch((err) => alert(err.response &&  err.response.data.message || 'Ada kesalahan di server. silahkan hubungi admin' ))
   }
