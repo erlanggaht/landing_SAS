@@ -25,8 +25,8 @@ export default function Consultans({ props }: PropsSwipperRef) {
             <div className='socialmedia py-3 flex gap-1'>
           <div className='flex items-center gap-2'><Image src={ig} alt={'ig'} width={32} height={32}/> <span>{instagram}</span></div>
           </div>{deskripsi}</div>
-          <div className='by_consultant mt-12 px-3 text-right sm:text-left sm:px-12 pb-8'>
-            <p className='text-lg font-semibold '>{ name_consult}</p>
+          <div className='by_consultant mt-12 px-3 text-right sm:text-left sm:px-8 pb-8'>
+            <p className='text-lg font-semibold '>{name_consult}</p>
             <p className='text-md'>{position}</p>
           </div>
         </div>

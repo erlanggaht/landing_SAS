@@ -35,7 +35,7 @@ export default function LoginAdmin() {
     
   if(responseState && responseState.length > 0) {
     router.push('/pages/admin')
-  }
+  } 
   return () => {
     if(rejectState) {
       router.push('/pages/login')

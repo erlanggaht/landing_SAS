@@ -14,7 +14,6 @@ import Button from "../atoms/button"
 import axios from "axios"
 import { NavigasiAdmin } from "../moleculs/navigasi_admin"
 import DeleteAdmin from "@/app/pages/admin/API/deleteAdmin"
-import { parseCookies } from "nookies"
 import LoadingPage from "../moleculs/loading"
 import CloudinaryUploadWidget from "./cloudinary"
 
@@ -30,6 +29,8 @@ export const EditProfile = ({ setEditProfile }: any) => {
         ig: "",
         id: ""
     })
+    const getImageProfileId = typeof window !== 'undefined' && sessionStorage.getItem('asset_id')
+
 
     // Masukan data default ke useState Input
     useEffect(() => {
@@ -71,12 +72,16 @@ export const EditProfile = ({ setEditProfile }: any) => {
                 deskripsi: input.deskripsi,
                 posisi: input.posisi,
                 ig: input.ig,
-                id: input.id
+                id: input.id,
+                CloudinaryID : getImageProfileId
             }
         }).then((res) => {
             alert(res.data && res.data.message)
             setEditProfile(false)
             dispatch(getAdmin())
+            setTimeout(()=>{
+                sessionStorage.clear()
+            },1500)
         }).catch((err) => {
             alert(err.response && err.response.data.message)
         })
@@ -88,6 +93,18 @@ useEffect(()=>{
     document.querySelector('#upload_widget').style.cssText = `background-color:transparent;color:transaparent`
 },[])
    
+
+// Handle Edit Image
+function HandleEditImageCancel () {
+
+    if(getImageProfileId) {
+        alert ('Image profile telah di ubah silahkan klik Update Profile')
+        setEditProfile(true)
+    } else {
+        setEditProfile(false)
+    }
+
+}
 
     return (
         <form className="my-6 px-1 sm:px-5" onSubmit={(e) => handleSubmit(e)}>
@@ -134,7 +151,7 @@ useEffect(()=>{
             <div className="w-full text-right flex justify-end" >
 
                 {/* Cancel Button */}
-                <div className="w-fulf flex-shrink-0 text-right" onClick={() => setEditProfile(false)}><div className="text-right inline-flex items-center  bg-white font-semibold p-2 px-3 hover:bg-base capitalize gap-2 active:opacity-50"><button className=" text-dark ">Cancel</button></div></div>
+                <div className="w-fulf flex-shrink-0 text-right" onClick={() => HandleEditImageCancel()}><div className="text-right inline-flex items-center  bg-white font-semibold p-2 px-3 hover:bg-base capitalize gap-2 active:opacity-50"><p className=" text-dark cursor-pointer ">Cancel</p></div></div>
 
                 {/* Submit Button */}
                 <div className="text-right inline-flex items-center  bg-white text-dark font-semibold p-2 px-3 hover:bg-base capitalize gap-2 active:opacity-50"><EditIcon props={{ w: 22, h: 22, fill: "#333" }} /><Button props={{ text: "Update Profile", style: "" }}></Button></div>
@@ -146,10 +163,18 @@ useEffect(()=>{
 
 export default function AdminPage() {
     const router = useRouter()
-    const tokenCookie = parseCookies().token
+    
     const [editProfile, setEditProfile] = useState(false)
     const dispatch = useDispatch<any>()
     const { loadingState, responseState, rejectState } = GlobalState() // UseSelector Global
+    const getImageProfileId = typeof window !== 'undefined' && sessionStorage.getItem('asset_id')
+
+    useEffect(()=>{
+        if(getImageProfileId) {
+            alert ('image telah di ubah silahkan update profil')
+            sessionStorage.clear
+        }
+    },[])
 
     // Validasi Page Redirect Jika Tidak Ada token login dan request api gagal atau reject request    
     useEffect(() => {
@@ -176,7 +201,6 @@ export default function AdminPage() {
                 <NavigasiAdmin />
                 <div className="my-12 sm:mx-32">
                     {responseState && responseState.map((m: any, i: Key) => {
-                        console.log(m)
                         return (
                             <main key={i}>
                                 <h1 className='text-4xl p-6 sm:text-center'>Hello, <span className='font-bold text-dark inline-block sm:inline'>{m.nama}</span></h1>
@@ -222,7 +246,7 @@ export default function AdminPage() {
                                                         {/* @ts-ignore */}
                                                         <div className="z-50 relative"  >
                                                             {editProfile && <CloudinaryUploadWidget />}
-                                                            <Image src={editProfile ? m.image  : ilustator_profile} alt={editProfile ? m.image  : ilustator_profile} width={280} height={280} className="rounded-full mt-2" /></div>
+                                                            <Image src={editProfile ? m.image  : ilustator_profile} id="uploadedimage" alt={editProfile ? m.image  : ilustator_profile} width={280} height={280} className={`${editProfile ? 'rounded-full w-[280px] h-[280px]'  : 'rounded-none'}   object-cover mt-2`} /></div>
                                                             {editProfile && <div className="flex items-center gap-2 justify-center mt-3 font-bold"><EditProfiles props={{fill:"#222",w:32,h:32}} />Ubah Foto <span className="font-light text-sm">(klik foto)</span></div>}
                                                     </figure>
                                                 </div>

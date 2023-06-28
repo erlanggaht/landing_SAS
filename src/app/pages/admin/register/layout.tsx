@@ -17,6 +17,7 @@ export default function RootLayout({
         {children}
         <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript" async 
       ></script>
+ 
         </body>
   )
 }

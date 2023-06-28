@@ -1,11 +1,15 @@
 'use client'
 import Link from "next/link"
 import Button from "../atoms/button"
+import LineScroll from "../atoms/line_scroll"
 
 export default function Navigasi() {
+
+  
+
   return (
     
-<div className="nav bg-dark sm:px-6 shadow top-0">
+<div className="nav bg-dark sm:px-6  top-0 relative">
   <input type="checkbox" id="nav-check" />
   <div className="nav-header">
     <div className="nav-title p-4 py-4 text-5xl drop-shadow font-bold text-[#777] group hover:text-white transition-colors">
@@ -30,6 +34,8 @@ export default function Navigasi() {
     <Link href="/pages/gallery"><Button props={{text:"Galeri Perusahaan",style:"bg-yellowBase sm:ml-2 rounded-sm px-5 py-3 hover:opacity-90 text-white  "}}></Button></Link>
     </div>
   </div>
+
+  <LineScroll props={{width:'10%'}} />
 </div>
 
   )
