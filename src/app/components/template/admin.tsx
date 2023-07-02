@@ -21,7 +21,7 @@ import CloudinaryUploadWidget from "./cloudinary"
 // Component Input Edit Profile
 export const EditProfile = ({ setEditProfile }: any) => {
     const dispatch = useDispatch<any>()
-    const {  responseState,  } = GlobalState() // UseSelector Global
+    const { responseState } = GlobalState() // UseSelector Global
     const [input, setInput] = useState({
         nama: "",
         deskripsi: "",
@@ -47,7 +47,7 @@ export const EditProfile = ({ setEditProfile }: any) => {
                 })
             })
         }
-        
+
     }, [responseState])
 
     // Handle Input
@@ -73,38 +73,38 @@ export const EditProfile = ({ setEditProfile }: any) => {
                 posisi: input.posisi,
                 ig: input.ig,
                 id: input.id,
-                CloudinaryID : getImageProfileId
+                CloudinaryID: getImageProfileId
             }
         }).then((res) => {
             alert(res.data && res.data.message)
             setEditProfile(false)
             dispatch(getAdmin())
-            setTimeout(()=>{
+            setTimeout(() => {
                 sessionStorage.clear()
-            },1500)
+            }, 1500)
         }).catch((err) => {
             alert(err.response && err.response.data.message)
         })
     }
 
-// Button Upload
-useEffect(()=>{
-    // @ts-ignore
-    document.querySelector('#upload_widget').style.cssText = `background-color:transparent;color:transaparent`
-},[])
-   
+    // Button Upload
+    useEffect(()=>{
+        // @ts-ignore
+        document.querySelector('#upload_widget').style.cssText = `background-color:transparent;color:transaparent`
+    },[])
 
-// Handle Edit Image
-function HandleEditImageCancel () {
 
-    if(getImageProfileId) {
-        alert ('Image profile telah di ubah silahkan klik Update Profile')
-        setEditProfile(true)
-    } else {
-        setEditProfile(false)
+    // Handle Edit Image
+    function HandleEditImageCancel() {
+
+        if (getImageProfileId) {
+            alert('Image profile telah di ubah silahkan klik Update Profile')
+            setEditProfile(true)
+        } else {
+            setEditProfile(false)
+        }
+
     }
-
-}
 
     return (
         <form className="my-6 px-1 sm:px-5" onSubmit={(e) => handleSubmit(e)}>
@@ -163,22 +163,14 @@ function HandleEditImageCancel () {
 
 export default function AdminPage() {
     const router = useRouter()
-    
+
     const [editProfile, setEditProfile] = useState(false)
     const dispatch = useDispatch<any>()
     const { loadingState, responseState, rejectState } = GlobalState() // UseSelector Global
-    const getImageProfileId = typeof window !== 'undefined' && sessionStorage.getItem('asset_id')
-
-    useEffect(()=>{
-        if(getImageProfileId) {
-            alert ('image telah di ubah silahkan update profil')
-            sessionStorage.clear
-        }
-    },[])
 
     // Validasi Page Redirect Jika Tidak Ada token login dan request api gagal atau reject request    
     useEffect(() => {
-        if (rejectState) router.push ('/pages/admin/login')
+        if (rejectState) router.push('/pages/admin/login')
     }, [rejectState])
 
     // Get API Via Redux dispatch
@@ -192,7 +184,7 @@ export default function AdminPage() {
     }, [dispatch])
 
 
-    
+
 
     return (
         <>
@@ -242,14 +234,15 @@ export default function AdminPage() {
 
                                     </div>
                                     <div className="ilustrator_profile  mx-0 sm:mx-auto my-6 " >
-                                                    <figure>
-                                                        {/* @ts-ignore */}
-                                                        <div className="z-50 relative"  >
-                                                            {editProfile && <CloudinaryUploadWidget />}
-                                                            <Image src={editProfile ? m.image  : ilustator_profile} id="uploadedimage" alt={editProfile ? m.image  : ilustator_profile} width={280} height={280} className={`${editProfile ? 'rounded-full w-[280px] h-[280px]'  : 'rounded-none'}   object-cover mt-2`} /></div>
-                                                            {editProfile && <div className="flex items-center gap-2 justify-center mt-3 font-bold"><EditProfiles props={{fill:"#222",w:32,h:32}} />Ubah Foto <span className="font-light text-sm">(klik foto)</span></div>}
-                                                    </figure>
-                                                </div>
+                                        <figure>
+                                            {/* @ts-ignore */}
+                                            <div className="z-50 relative"  >
+                                                {editProfile && <CloudinaryUploadWidget />}
+                                                <Image src={editProfile ? m.image ||  ilustator_profile : ilustator_profile} id="uploadedimage" alt={editProfile ? m.image ||  ilustator_profile : ilustator_profile} width={280} height={280} className={`${editProfile ? 'rounded-full w-[280px] h-[280px]' : 'rounded-none'}   object-cover mt-2`} />
+                                            </div>
+                                            {editProfile && <div className="flex items-center gap-2 justify-center mt-3 font-bold"><EditProfiles props={{ fill: "#222", w: 32, h: 32 }} />Ubah Foto <span className="font-light text-sm">(klik foto)</span></div>}
+                                        </figure>
+                                    </div>
                                 </section>
                             </main>
                         )

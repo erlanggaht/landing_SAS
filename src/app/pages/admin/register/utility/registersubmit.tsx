@@ -11,12 +11,10 @@ interface PropsRegisterSubmit {
         fullname : string,
         token : string,
         router : any,
-        asset_id : string | any
 }
 
 export default  function RegisterSubmit(e : FormEvent,props : PropsRegisterSubmit) {
-    const {username,password,ig,deskripsi,posisi,fullname,token,router,asset_id} = props
- console.log(asset_id)
+    const {username,password,ig,deskripsi,posisi,fullname,token,router} = props
     e.preventDefault();
 
     const add_karyawan_account = axios(`${URL_HOST_API}/addAkun`,{
@@ -31,7 +29,6 @@ export default  function RegisterSubmit(e : FormEvent,props : PropsRegisterSubmi
             posisi : posisi,
             ig : ig,
             
-            CloudinaryID : asset_id 
       }
     }).then((res) => {
       console.log(res)
