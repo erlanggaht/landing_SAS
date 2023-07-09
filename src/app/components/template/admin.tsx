@@ -169,9 +169,9 @@ export default function AdminPage() {
     const { loadingState, responseState, rejectState } = GlobalState() // UseSelector Global
 
     // Validasi Page Redirect Jika Tidak Ada token login dan request api gagal atau reject request    
-    useEffect(() => {
-        if (rejectState) router.push('/pages/admin/login')
-    }, [rejectState])
+    // useEffect(() => {
+    //     if (rejectState) router.push('/pages/admin/login')
+    // }, [rejectState])
 
     // Get API Via Redux dispatch
     useEffect(() => {
