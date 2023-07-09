@@ -8,7 +8,8 @@ export default async function GetKaryawan() {
         method : "GET",
         headers : {
           Authorization : `Bearer ${token}`
-        }
+        },
+        withCredentials:true
       })
     
       return response

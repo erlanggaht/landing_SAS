@@ -21,7 +21,6 @@ interface PropsLoginSubmit {
         username : username,
         password : password.toString(),        
       },
-      
     }).then((res) =>{
        alert(res.data.message)
         setCookie(null,'token',res.data.token,{
