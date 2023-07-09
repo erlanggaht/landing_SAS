@@ -16,6 +16,7 @@ import { NavigasiAdmin } from "../moleculs/navigasi_admin"
 import DeleteAdmin from "@/app/pages/admin/API/deleteAdmin"
 import LoadingPage from "../moleculs/loading"
 import CloudinaryUploadWidget from "./cloudinary"
+import { get } from "http"
 
 
 // Component Input Edit Profile
@@ -177,6 +178,9 @@ export default function AdminPage() {
     useEffect(() => {
         dispatch(getAdmin())
 
+        return () => {
+            dispatch(getAdmin())
+        }
     }, [dispatch])
 
 
@@ -184,7 +188,7 @@ export default function AdminPage() {
 
     return (
         <>
-            {/* {loadingState ? <div className="bg-base h-screen w-full grid place-content-center"><LoadingPage/></div>:  */}
+            {loadingState ? <div className="bg-base h-screen w-full grid place-content-center"><LoadingPage/></div>: 
             <>
                 <NavigasiAdmin />
                 <div className="my-12 sm:mx-32">
@@ -245,7 +249,7 @@ export default function AdminPage() {
                     })}
                 </div>
             </>
-         {/* }   */}
+   }   
         </>
     )
 }
