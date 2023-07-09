@@ -15,17 +15,16 @@ export default function LineScroll({props} : PropsLineScroll) {
   // Scroll Follow
   if(typeof window !== 'undefined' ) {
     window.addEventListener("scroll", (event) => {
-      let a = document.body.getBoundingClientRect()
-      const b = Math.abs(a.y - 8) * a.height / a.height / 2
+      const b = (document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight) * 100
    
-      document.querySelector('#lineScroll')?.setAttribute("style",`width:${b}px;transition:.1s all`)
+      document.querySelector('#lineScroll')?.setAttribute("style",`width:${b}%;transition:.1s all`)
    })
   }
  
 
   return (
     <>
-      <div id={'lineScroll'}className={` h-3 shadow bg-otherColor absolute left-0`}></div>
+      <div id={'lineScroll'} className={` h-3 shadow bg-otherColor absolute left-0`}></div>
     </>
   )
 }

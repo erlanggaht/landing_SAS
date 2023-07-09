@@ -18,7 +18,6 @@ export default function SwiperConsultans() {
   useEffect(() => {
     dispatch(getDataKaryawan())
   }, [dispatch])
-
   return (
     <>
       <h1 className="text-center text-4xl uppercase font-bold text-dark">Anggota Perusahaan</h1>

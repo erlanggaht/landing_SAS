@@ -21,11 +21,12 @@ interface PropsLoginSubmit {
         username : username,
         password : password.toString(),        
       },
+      
     }).then((res) =>{
        alert(res.data.message)
         setCookie(null,'token',res.data.token,{
-        secure : true,
         path: "/",
+        secure: true
        })
        router.replace(`${URL_HOST_FRONT}/pages/admin/`)
     }).catch((err) => alert(err.response &&  err.response.data.message || 'Ada kesalahan di server. silahkan hubungi admin' ))

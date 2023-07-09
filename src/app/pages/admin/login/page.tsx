@@ -31,27 +31,6 @@ export default function LoginAdmin() {
 
 
 
-  useEffect(()=>{
-    
-  if(responseState && responseState.length > 0) {
-    router.push('/pages/admin')
-  } 
-  return () => {
-    if(rejectState) {
-      router.push('/pages/login')
-    }
-  }
-  },[responseState])
-
-  useEffect(() => {
-    // @ts-ignore
-    dispatch(getAdmin())
-    
- 
-}, [dispatch])
-
-
-
   return (
     <>
     <div className="absolute top-0 right-0 left-0">
@@ -60,13 +39,7 @@ export default function LoginAdmin() {
       <main className="h-screen flex items-center justify-center">
         <div className="row w-full " >
           <div className="col-md-12">
-            <form className="form2" onSubmit={(e) => LoginSubmit(e,
-              {
-                username: input.username,
-                password: input.password,
-                router: router,
-              })
-            }>
+            <div className="form2" >
               <h1 className="text-2xl"> Login </h1>
 
               <fieldset>
@@ -81,9 +54,15 @@ export default function LoginAdmin() {
 
 
               </fieldset>
-              <button type="submit" className="btnSubmit text-yellowBase">Login</button>
+              <button type="submit" className="btnSubmit text-yellowBase" onClick={(e) => LoginSubmit(e,
+              {
+                username: input.username,
+                password: input.password,
+                router: router,
+              })
+            }>Login</button>
 
-            </form>
+            </div>
           </div>
         </div>
       </main>
