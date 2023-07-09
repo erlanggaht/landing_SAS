@@ -179,7 +179,10 @@ export default function AdminPage() {
 
         dispatch(getAdmin())
 
-        if(rejectState) dispatch(getAdmin())
+        if(rejectState) {
+            dispatch(getAdmin())
+            router.push('pages/admin/login')
+        }
         
     }, [dispatch,rejectState])
 

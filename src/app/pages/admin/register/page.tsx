@@ -35,6 +35,18 @@ export default function RegisterAdmin() {
 
 
 
+  useEffect(()=>{
+    
+    if(responseState && responseState.length > 0) {
+      router.push('/pages/admin')
+    }
+  
+    if(rejectState) {
+      router.push('/pages/admin/register')
+    }
+   
+    },[responseState])
+
 
   return (
     <>
