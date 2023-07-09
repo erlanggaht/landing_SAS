@@ -170,27 +170,24 @@ export default function AdminPage() {
     const { loadingState, responseState, rejectState } = GlobalState() // UseSelector Global
 
     // Validasi Page Redirect Jika Tidak Ada token login dan request api gagal atau reject request    
-    // useEffect(() => {
-    //     if (rejectState) router.push('/pages/admin/login')
-    // }, [rejectState])
+    useEffect(() => {
+        if (rejectState) router.push('/pages/admin/login')
+    }, [rejectState])
 
     // Get API Via Redux dispatch
     useEffect(() => {
 
         dispatch(getAdmin())
 
-        if(rejectState) dispatch(getAdmin())
         
         
-    }, [dispatch,rejectState])
-
-
+    }, [rejectState])
 
 
     return (
         <>
             {loadingState ? <div className="bg-base h-screen w-full grid place-content-center"><LoadingPage/></div>: 
-            <>
+             <>
                 <NavigasiAdmin />
                 <div className="my-12 sm:mx-32">
                     {responseState && responseState.map((m: any, i: Key) => {
