@@ -176,12 +176,12 @@ export default function AdminPage() {
 
     // Get API Via Redux dispatch
     useEffect(() => {
+
         dispatch(getAdmin())
 
-        return () => {
-            dispatch(getAdmin())
-        }
-    }, [dispatch])
+        if(rejectState) dispatch(getAdmin())
+        
+    }, [dispatch,rejectState])
 
 
 
