@@ -179,9 +179,8 @@ export default function AdminPage() {
 
         dispatch(getAdmin())
 
-        if(rejectState) {
-            dispatch(getAdmin())
-        }
+        if(rejectState) dispatch(getAdmin())
+        
         
     }, [dispatch,rejectState])
 
